@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minecraft, le film - Fiche Film</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-black: #111215;
+            --color-dark: #1a1c20;
+            --color-gray: #9ca3af;
+            --color-light-gray: #f3f4f6;
+            --color-white: #ffffff;
+            --color-accent: #4ade80;
+            --color-accent-dark: #22c55e;
+            --color-family: #3b82f6;
+            --color-comedy: #f97316;
+            --color-adventure: #8b5cf6;
+            --color-fantasy: #ec4899;
+            --color-gradient-start: rgba(26, 28, 32, 0.8);
+            --color-gradient-end: rgba(17, 18, 21, 1);
+            --font-primary: 'Plus Jakarta Sans', sans-serif;
+            --font-secondary: 'Inter', sans-serif;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --border-radius-sm: 4px;
+            --border-radius-md: 8px;
+            --border-radius-lg: 12px;
+            --border-radius-xl: 16px;
+            --transition-base: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-primary);
+            background-color: var(--color-black);
+            color: var(--color-white);
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+        
+        a {
+            color: var(--color-accent);
+            text-decoration: none;
+            transition: var(--transition-base);
+        }
+        
+        a:hover {
+            color: var(--color-accent-dark);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .hero {
+            position: relative;
+            height: 80vh;
+            max-height: 700px;
+            min-height: 500px;
+            display: flex;
+            align-items: flex-end;
+            margin-bottom: 3rem;
+            overflow: hidden;
+        }
+        
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            filter: brightness(0.6);
+        }
+        
+        .hero-gradient {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 70%;
+            background: linear-gradient(to top, var(--color-gradient-end), var(--color-gradient-start), transparent);
+            z-index: -1;
+        }
+        
+        .hero-content {
+            width: 100%;
+            padding: 2rem 0;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .movie-details {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            align-items: flex-start;
+        }
+        
+        .poster {
+            flex-shrink: 0;
+            width: 300px;
+            height: 450px;
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            transform: translateY(-80px);
+            position: relative;
+        }
+        
+        .poster img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .poster::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            box-shadow: inset 0 -100px 60px -60px rgba(17, 18, 21, 0.8);
+        }
+        
+        .info {
+            flex: 1;
+            padding-top: 1rem;
+        }
+        
+        .title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+        
+        .tagline {
+            font-size: 1.25rem;
+            font-style: italic;
+            color: var(--color-accent);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+        
+        .badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+        
+        .badge-family {
+            background-color: rgba(59, 130, 246, 0.2);
+            color: var(--color-family);
+            border: 1px solid var(--color-family);
+        }
+        
+        .badge-comedy {
+            background-color: rgba(249, 115, 22, 0.2);
+            color: var(--color-comedy);
+            border: 1px solid var(--color-comedy);
+        }
+        
+        .badge-adventure {
+            background-color: rgba(139, 92, 246, 0.2);
+            color: var(--color-adventure);
+            border: 1px solid var(--color-adventure);
+        }
+        
+        .badge-fantasy {
+            background-color: rgba(236, 72, 153, 0.2);
+            color: var(--color-fantasy);
+            border: 1px solid var(--color-fantasy);
+        }
+        
+        .badge-release {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--color-white);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .badge-duration {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--color-white);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .rating {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .rating-value {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--color-accent);
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-right: 1rem;
+        }
+        
+        .rating-text {
+            font-size: 1rem;
+        }
+        
+        .synopsis {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        .actions {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius-md);
+            font-size: 1rem;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition-base);
+            border: none;
+        }
+        
+        .btn-primary {
+            background-color: var(--color-accent);
+            color: var(--color-black);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--color-accent-dark);
+            color: var(--color-black);
+        }
+        
+        .btn-secondary {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--color-white);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+            color: var(--color-white);
+        }
+        
+        .section {
+            margin-bottom: 4rem;
+        }
+        
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, var(--color-accent), transparent);
+        }
+        
+        .section p {
+            margin-bottom: 1.25rem;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        .two-cols {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        
+        .detail-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .detail-label {
+            font-size: 0.875rem;
+            color: var(--color-gray);
+            margin-bottom: 0.25rem;
+            font-weight: 500;
+        }
+        
+        .detail-value {
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        
+        .cast-section {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cast-scroller {
+            display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+            padding: 1rem 0;
+            scrollbar-width: thin;
+            scrollbar-color: var(--color-accent) var(--color-dark);
+        }
+        
+        .cast-scroller::-webkit-scrollbar {
+            height: 6px;
+        }
+        
+        .cast-scroller::-webkit-scrollbar-track {
+            background: var(--color-dark);
+            border-radius: 20px;
+        }
+        
+        .cast-scroller::-webkit-scrollbar-thumb {
+            background-color: var(--color-accent);
+            border-radius: 20px;
+        }
+        
+        .cast-card {
+            flex: 0 0 auto;
+            width: 150px;
+            border-radius: var(--border-radius-md);
+            overflow: hidden;
+            background-color: var(--color-dark);
+            transition: var(--transition-base);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .cast-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .cast-photo {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        
+        .cast-info {
+            padding: 0.75rem;
+        }
+        
+        .cast-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .cast-character {
+            font-size: 0.8rem;
+            color: var(--color-gray);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .companies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+            margin-top: 2rem;
+        }
+        
+        .company {
+            filter: grayscale(1) brightness(1.5);
+            opacity: 0.6;
+            transition: var(--transition-base);
+            max-width: 100px;
+            max-height: 50px;
+        }
+        
+        .company:hover {
+            filter: grayscale(0) brightness(1);
+            opacity: 1;
+        }
+        
+        .trailer-container {
+            margin-top: 1.5rem;
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 aspect ratio */
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .trailer-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 2rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--color-gray);
+            font-size: 0.875rem;
+        }
+        
+        @media (max-width: 800px) {
+            .movie-details {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .poster {
+                transform: translateY(0);
+                margin-bottom: 2rem;
+                width: 250px;
+                height: 375px;
+            }
+            
+            .title {
+                font-size: 2.5rem;
+                text-align: center;
+            }
+            
+            .tagline {
+                text-align: center;
+            }
+            
+            .badges {
+                justify-content: center;
+            }
+            
+            .rating {
+                justify-content: center;
+            }
+            
+            .actions {
+                justify-content: center;
+            }
+            
+            .two-cols {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .title {
+                font-size: 2rem;
+            }
+            
+            .hero {
+                height: auto;
+                max-height: none;
+                min-height: 0;
+            }
+            
+            .poster {
+                width: 200px;
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="hero-bg" style="background-image: url('https://media.themoviedb.org/t/p/w220_and_h330_face/2Nti3gYAX513wvhp8IiLL6ZDyOm.jpg');"></div>
+        <div class="hero-gradient"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="title">Minecraft, le film</h1>
+                <p class="tagline">L'aventure se construit bloc par bloc</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="movie-details">
+            <div class="poster">
+                <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/72HHjrSkfezUpu8KMG2vhtasWOL.jpg" alt="Minecraft, le film Poster">
+            </div>
+            
+            <div class="info">
+                <div class="badges">
+                    <span class="badge badge-family">Familial</span>
+                    <span class="badge badge-comedy">Comédie</span>
+                    <span class="badge badge-adventure">Aventure</span>
+                    <span class="badge badge-fantasy">Fantastique</span>
+                    <span class="badge badge-release">2 avril 2025</span>
+                    <span class="badge badge-duration">101 minutes</span>
+                </div>
+                
+                <div class="rating">
+                    <div class="rating-value">7.1</div>
+                    <div class="rating-text">
+                        <div>Score TMDB</div>
+                        <div>(18 votes)</div>
+                    </div>
+                </div>
+                
+                <div class="synopsis">
+                    <p>Bienvenue dans l'univers de Minecraft où la créativité est essentielle à la survie ! Quatre outsiders – Garrett, Henry, Natalie et Dawn – sont soudainement projetés à travers un mystérieux portail menant à L'Overworld – un incroyable monde cubique qui prospère grâce à l'imagination.</p>
+                </div>
+                
+                <div class="actions">
+                    <a href="https://www.themoviedb.org/movie/950387" target="_blank" class="btn btn-primary">Voir sur TMDB</a>
+                    <a href="#trailer" class="btn btn-secondary">Voir la bande-annonce</a>
+                </div>
+                
+                <div class="two-cols">
+                    <div>
+                        <div class="detail-group">
+                            <div class="detail-label">Réalisation</div>
+                            <div class="detail-value">Jared Hess</div>
+                        </div>
+                        <div class="detail-group">
+                            <div class="detail-label">Scénario</div>
+                            <div class="detail-value">Chris Galletta, Gavin James, Neil Widener, Chris Bowman, Hubbel Palmer</div>
+                        </div>
+                        <div class="detail-group">
+                            <div class="detail-label">Pays d'origine</div>
+                            <div class="detail-value">États-Unis, Suède</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="detail-group">
+                            <div class="detail-label">Budget</div>
+                            <div class="detail-value">150 000 000 $</div>
+                        </div>
+                        <div class="detail-group">
+                            <div class="detail-label">Musique</div>
+                            <div class="detail-value">Mark Mothersbaugh</div>
+                        </div>
+                        <div class="detail-group">
+                            <div class="detail-label">Production</div>
+                            <div class="detail-value">Warner Bros. Pictures, Legendary Pictures, Mojang Studios</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section" id="trailer">
+            <h2 class="section-title">Bande-annonce</h2>
+            <div class="trailer-container">
+                <iframe src="https://www.youtube.com/embed/R59ZeaOcUbY" title="Minecraft, Le Film | Bande-annonce officielle (VF)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">Synopsis et détails</h2>
+            <p>Pour rentrer chez eux, il leur faudra maîtriser ce monde (et le protéger de créatures maléfiques comme les Piglins et les Zombies), tout en s'engageant dans une quête fantastique aux côtés de Steve, expert fabricateur. Cette aventure les invitera à faire preuve d'audace et à développer leurs qualités singulières de créativité. Autant de facultés dont ils auront besoin pour s'épanouir dans le monde réel.</p>
+            <p><strong>Minecraft, le film</strong> est l'adaptation très attendue du jeu vidéo phénomène qui a conquis des centaines de millions de joueurs à travers le monde. Ce long-métrage transpose sur grand écran l'univers cubique si caractéristique du jeu tout en y ajoutant une histoire originale pleine d'humour et d'aventure.</p>
+            <p>Réalisé par Jared Hess (Napoleon Dynamite, Gentlemen Broncos), le film met en scène Jason Momoa dans le rôle de Garrett, accompagné de Jack Black qui incarne Steve, personnage emblématique du jeu. Cette aventure familiale explore les thèmes de la créativité, de la collaboration et du courage, tout en offrant un spectacle visuel unique inspiré de l'esthétique pixelisée du jeu original.</p>
+        </div>
+        
+        <div class="section cast-section">
+            <h2 class="section-title">Distribution principale</h2>
+            <div class="cast-scroller">
+                <div class="cast-card">
+                    <img src="https://media.themoviedb.org/t/p/w138_and_h175_face/6dEFBpZH8C8OijsynkSajQT99Pb.jpg" alt="Jason Momoa" class="cast-photo">
+                    <div class="cast-info">
+                        <div class="cast-name">Jason Momoa</div>
+                        <div class="cast-character">Garrett Garrison</div>
+                    </div>
+                </div>
+                <div class="cast-card">
+                    <img src="https://media.themoviedb.org/t/p/w138_and_h175_face/rtCx0fiYxJVhzXXdwZE2XRTfIKE.jpg" alt="Jack Black" class="cast-photo">
+                    <div class="cast-info">
+                        <div class="cast-name">Jack Black</div>
+                        <div class="cast-character">Steve</div>
+                    </div>
+                </div>
+                <div class="cast-card">
+                    <img src="https://media.themoviedb.org/t/p/w138_and_h175_face/9ht2Ea25UO9pZYOLyoHepiCyepq.jpg" alt="Sebastian Eugene Hansen" class="cast-photo">
+                    <div class="cast-info">
+                        <div class="cast-name">Sebastian Eugene Hansen</div>
+                        <div class="cast-character">Henry</div>
+                    </div>
+                </div>
+                <div class="cast-card">
+                    <img src="https://media.themoviedb.org/t/p/w138_and_h175_face/pIBSSigZATyYZYjfCL59Nw6FjbM.jpg" alt="Danielle Brooks" class="cast-photo">
+                    <div class="cast-info">
+                        <div class="cast-name">Danielle Brooks</div>
+                        <div class="cast-character">Dawn</div>
+                    </div>
+                </div>
+                <div class="cast-card">
+                    <img src="https://media.themoviedb.org/t/p/w138_and_h175_face/xBJsFGAL3sOIxMUA0sMVEKKpAL4.jpg" alt="Emma Myers" class="cast-photo">
+                    <div class="cast-info">
+                        <div class="cast-name">Emma Myers</div>
+                        <div class="cast-character">Natalie</div>
+                    </div>
+                </div>
+                <div class="cast-card">
+                    <img src="https://media.themoviedb.org/t/p/w138_and_h175_face/b33reVbgFkLPSdEamHsP9HREqFT.jpg" alt="Jennifer Coolidge" class="cast-photo">
+                    <div class="cast-info">
+                        <div class="cast-name">Jennifer Coolidge</div>
+                        <div class="cast-character">Vice Principal Marlene</div>
+                    </div>
+                </div>
+                <div class="cast-card">
+                    <img src="https://media.themoviedb.org/t/p/w138_and_h175_face/m8D9XlTGfI0ZmauMKtYp5tw8eNi.jpg" alt="Rachel House" class="cast-photo">
+                    <div class="cast-info">
+                        <div class="cast-name">Rachel House</div>
+                        <div class="cast-character">Malgosha (voice)</div>
+                    </div>
+                </div>
+                <div class="cast-card">
+                    <img src="https://media.themoviedb.org/t/p/w138_and_h175_face/7a1sWg1W7ZmNF8bLSnyAlJgQQGD.jpg" alt="Matt Berry" class="cast-photo">
+                    <div class="cast-info">
+                        <div class="cast-name">Matt Berry</div>
+                        <div class="cast-character">Nitwit (Voice)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">Le phénomène Minecraft</h2>
+            <p>Lancé en 2011, <strong>Minecraft</strong> est rapidement devenu l'un des jeux vidéo les plus populaires de tous les temps, avec plus de 300 millions de copies vendues à travers le monde. Créé par le développeur suédois Markus "Notch" Persson puis développé par Mojang Studios (aujourd'hui propriété de Microsoft), le jeu est célèbre pour sa liberté créative presque illimitée, permettant aux joueurs de construire virtuellement tout ce qu'ils peuvent imaginer dans un monde fait de blocs cubiques.</p>
+            
+            <p>Cette adaptation cinématographique marque une nouvelle étape dans l'expansion de la franchise, qui comprend déjà des livres, des jouets, des vêtements et divers produits dérivés. Le film cherche à capturer l'esprit d'aventure et de créativité qui a fait le succès du jeu, tout en proposant une narration accessible aux néophytes.</p>
+            
+            <p>Produit par Warner Bros. et Legendary Pictures en collaboration avec Mojang Studios, le film a bénéficié d'un budget conséquent de 150 millions de dollars, témoignant de l'ambition du projet et des attentes placées dans cette adaptation d'une des propriétés intellectuelles les plus valorisées de l'industrie du divertissement.</p>
+            
+            <div class="companies">
+                <img src="/api/placeholder/100/50" alt="Warner Bros. Pictures" class="company">
+                <img src="/api/placeholder/100/50" alt="Legendary Pictures" class="company">
+                <img src="/api/placeholder/100/50" alt="Mojang Studios" class="company">
+                <img src="/api/placeholder/100/50" alt="Vertigo Entertainment" class="company">
+                <img src="/api/placeholder/100/50" alt="On the Roam" class="company">
+            </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 - Données fournies par TMDB - Film "Minecraft, le film" actuellement en salle</p>
+        </div>
+    </footer>
+</body>
+</html>
