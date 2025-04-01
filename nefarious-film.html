@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nefarious - Fiche Film</title>
+    <style>
+        :root {
+            --primary-color: #8b0000;
+            --secondary-color: #222;
+            --text-color: #eee;
+            --accent-color: #ff5555;
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+        }
+        
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            padding: 20px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .movie-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .poster {
+            flex: 0 0 300px;
+        }
+        
+        .poster img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
+        }
+        
+        .movie-info {
+            flex: 1 1 600px;
+        }
+        
+        .tag-line {
+            font-style: italic;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .details {
+            background-color: var(--card-bg);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            margin-bottom: 25px;
+        }
+        
+        .genres {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .genre {
+            background-color: var(--primary-color);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .meta-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .meta-label {
+            font-weight: 600;
+            color: var(--accent-color);
+            font-size: 0.9rem;
+        }
+        
+        .meta-value {
+            font-size: 1.1rem;
+        }
+        
+        h2 {
+            color: var(--accent-color);
+            font-size: 1.8rem;
+            margin-top: 30px;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 10px;
+        }
+        
+        p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .cast-section {
+            margin-top: 40px;
+        }
+        
+        .cast-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .cast-card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+        
+        .cast-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .cast-photo {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            background-color: #333;
+        }
+        
+        .cast-info {
+            padding: 12px;
+        }
+        
+        .cast-name {
+            font-weight: 600;
+            margin: 0 0 5px 0;
+        }
+        
+        .cast-character {
+            font-size: 0.9rem;
+            color: #aaa;
+            margin: 0;
+        }
+        
+        .footer {
+            margin-top: 50px;
+            text-align: center;
+            padding: 20px;
+            border-top: 1px solid #333;
+            font-size: 0.9rem;
+            color: #777;
+        }
+        
+        @media (max-width: 768px) {
+            .movie-container {
+                flex-direction: column;
+            }
+            
+            .poster {
+                margin: 0 auto;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>NEFARIOUS</h1>
+            <div class="rating">
+                <span>⭐ 6.8/10</span>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="movie-container">
+            <div class="poster">
+                <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/xvq6BtFWvuXQAuY8kZjz1b7xmSA.jpg" alt="Affiche Nefarious">
+            </div>
+            
+            <div class="movie-info">
+                <div class="details">
+                    <div class="genres">
+                        <span class="genre">Horreur</span>
+                        <span class="genre">Drame</span>
+                    </div>
+                    
+                    <h2>Synopsis</h2>
+                    <p>Le jour de son exécution, un tueur en série subit une évaluation psychiatrique au cours de laquelle il prétend être un démon et affirme qu'avant la fin de son temps, le psychiatre commettra trois meurtres.</p>
+                    
+                    <div class="meta-info">
+                        <div class="meta-item">
+                            <span class="meta-label">Date de sortie</span>
+                            <span class="meta-value">28 mars 2025</span>
+                        </div>
+                        
+                        <div class="meta-item">
+                            <span class="meta-label">Durée</span>
+                            <span class="meta-value">98 minutes</span>
+                        </div>
+                        
+                        <div class="meta-item">
+                            <span class="meta-label">Langue originale</span>
+                            <span class="meta-value">Anglais</span>
+                        </div>
+                        
+                        <div class="meta-item">
+                            <span class="meta-label">Budget</span>
+                            <span class="meta-value">3 000 000 $</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <h2>À propos du film</h2>
+                <p>Nefarious est un thriller d'horreur psychologique qui explore les frontières entre le mal humain et le mal surnaturel. Le film se concentre sur une intense confrontation intellectuelle entre un tueur en série qui prétend être possédé par un démon et un psychiatre sceptique. Ce qui commence comme une évaluation psychiatrique de routine se transforme en un jeu mortel du chat et de la souris, où le docteur doit déterminer si son patient est vraiment possédé ou simplement un manipulateur extrêmement intelligent.</p>
+                
+                <p>Réalisé par Chuck Konzelman et Cary Solomon, ce film offre une réflexion troublante sur la nature du mal dans notre société, tout en maintenant une tension psychologique constante qui captive le spectateur jusqu'à la dernière minute.</p>
+            </div>
+        </div>
+        
+        <div class="cast-section">
+            <h2>Distribution principale</h2>
+            <div class="cast-grid">
+                <div class="cast-card">
+                    <img class="cast-photo" src="https://media.themoviedb.org/t/p/w138_and_h175_face/aHQtxIjMEDWdXqvFJplx0Kcwdn6.jpg" alt="Sean Patrick Flanery">
+                    <div class="cast-info">
+                        <p class="cast-name">Sean Patrick Flanery</p>
+                        <p class="cast-character">Nefarious / Edward Wayne Brady</p>
+                    </div>
+                </div>
+                
+                <div class="cast-card">
+                    <img class="cast-photo" src="https://media.themoviedb.org/t/p/w138_and_h175_face/n5hN1Ik6gKGiX5xVpFUMeTjdGED.jpg" alt="Jordan Belfi">
+                    <div class="cast-info">
+                        <p class="cast-name">Jordan Belfi</p>
+                        <p class="cast-character">Dr. James Martin</p>
+                    </div>
+                </div>
+                
+                <div class="cast-card">
+                    <img class="cast-photo" src="https://media.themoviedb.org/t/p/w138_and_h175_face/pQqLdF1l7NcyR2NotbtDcDfJMKM.jpg" alt="Tom Ohmer">
+                    <div class="cast-info">
+                        <p class="cast-name">Tom Ohmer</p>
+                        <p class="cast-character">Warden Tom Moss</p>
+                    </div>
+                </div>
+                
+                <div class="cast-card">
+                    <img class="cast-photo" src="https://media.themoviedb.org/t/p/w138_and_h175_face/jwUlSnA3md7CPtKNtEswYPtVFqQ.jpg" alt="Glenn Beck">
+                    <div class="cast-info">
+                        <p class="cast-name">Glenn Beck</p>
+                        <p class="cast-character">Glenn Beck</p>
+                    </div>
+                </div>
+                
+                <div class="cast-card">
+                    <img class="cast-photo" src="/api/placeholder/138/175" alt="Daniel Martin Berkey">
+                    <div class="cast-info">
+                        <p class="cast-name">Daniel Martin Berkey</p>
+                        <p class="cast-character">Father Louis</p>
+                    </div>
+                </div>
+                
+                <div class="cast-card">
+                    <img class="cast-photo" src="https://media.themoviedb.org/t/p/w138_and_h175_face/i8OVPh4axVPhTAso3fPEJ86V0v2.jpg" alt="Mark De Alessandro">
+                    <div class="cast-info">
+                        <p class="cast-name">Mark De Alessandro</p>
+                        <p class="cast-character">Dr. Alan Fischer</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="production-section">
+            <h2>Production</h2>
+            <p><strong>Réalisation :</strong> Chuck Konzelman, Cary Solomon</p>
+            <p><strong>Scénario :</strong> Chuck Konzelman, Cary Solomon</p>
+            <p><strong>Production :</strong> Sheila Hart, Cary Solomon, Chuck Konzelman, Chris Jones</p>
+            <p><strong>Sociétés de production :</strong> Believe Entertainment, Soli Deo Gloria Releasing</p>
+            <p><strong>Pays d'origine :</strong> États-Unis</p>
+        </div>
+        
+        <div class="footer">
+            <p>© 2025 - Données fournies par TMDB - Film "Nefarious" actuellement en salle</p>
+        </div>
+    </div>
+</body>
+</html>
