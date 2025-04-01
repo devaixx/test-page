@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Monkey - Fiche Film</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-black: #111215;
+            --color-dark: #1a1c20;
+            --color-gray: #9ca3af;
+            --color-light-gray: #f3f4f6;
+            --color-white: #ffffff;
+            --color-accent: #ec5e2a;
+            --color-accent-dark: #d44219;
+            --color-horror: #ff3a5e;
+            --color-comedy: #32d5a1;
+            --color-gradient-start: rgba(26, 28, 32, 0.8);
+            --color-gradient-end: rgba(17, 18, 21, 1);
+            --font-primary: 'Plus Jakarta Sans', sans-serif;
+            --font-secondary: 'Inter', sans-serif;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --border-radius-sm: 4px;
+            --border-radius-md: 8px;
+            --border-radius-lg: 12px;
+            --border-radius-xl: 16px;
+            --transition-base: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-primary);
+            background-color: var(--color-black);
+            color: var(--color-white);
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+        
+        a {
+            color: var(--color-accent);
+            text-decoration: none;
+            transition: var(--transition-base);
+        }
+        
+        a:hover {
+            color: var(--color-accent-dark);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .hero {
+            position: relative;
+            height: 80vh;
+            max-height: 700px;
+            min-height: 500px;
+            display: flex;
+            align-items: flex-end;
+            margin-bottom: 3rem;
+            overflow: hidden;
+        }
+        
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            filter: brightness(0.6);
+        }
+        
+        .hero-gradient {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 70%;
+            background: linear-gradient(to top, var(--color-gradient-end), var(--color-gradient-start), transparent);
+            z-index: -1;
+        }
+        
+        .hero-content {
+            width: 100%;
+            padding: 2rem 0;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .movie-details {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            align-items: flex-start;
+        }
+        
+        .poster {
+            flex-shrink: 0;
+            width: 300px;
+            height: 450px;
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            transform: translateY(-80px);
+            position: relative;
+        }
+        
+        .poster img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .poster::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            box-shadow: inset 0 -100px 60px -60px rgba(17, 18, 21, 0.8);
+        }
+        
+        .info {
+            flex: 1;
+            padding-top: 1rem;
+        }
+        
+        .title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+        
+        .tagline {
+            font-size: 1.25rem;
+            font-style: italic;
+            color: var(--color-accent);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+        
+        .badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+        
+        .badge-horror {
+            background-color: rgba(255, 58, 94, 0.2);
+            color: var(--color-horror);
+            border: 1px solid var(--color-horror);
+        }
+        
+        .badge-comedy {
+            background-color: rgba(50, 213, 161, 0.2);
+            color: var(--color-comedy);
+            border: 1px solid var(--color-comedy);
+        }
+        
+        .badge-release {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--color-white);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .badge-duration {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--color-white);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .rating {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .rating-value {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--color-accent);
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-right: 1rem;
+        }
+        
+        .rating-text {
+            font-size: 1rem;
+        }
+        
+        .synopsis {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        .actions {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius-md);
+            font-size: 1rem;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition-base);
+            border: none;
+        }
+        
+        .btn-primary {
+            background-color: var(--color-accent);
+            color: var(--color-white);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--color-accent-dark);
+            color: var(--color-white);
+        }
+        
+        .btn-secondary {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--color-white);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+            color: var(--color-white);
+        }
+        
+        .section {
+            margin-bottom: 4rem;
+        }
+        
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, var(--color-accent), transparent);
+        }
+        
+        .section p {
+            margin-bottom: 1.25rem;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        .two-cols {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        
+        .detail-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .detail-label {
+            font-size: 0.875rem;
+            color: var(--color-gray);
+            margin-bottom: 0.25rem;
+            font-weight: 500;
+        }
+        
+        .detail-value {
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        
+        .cast-section {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cast-scroller {
+            display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+            padding: 1rem 0;
+            scrollbar-width: thin;
+            scrollbar-color: var(--color-accent) var(--color-dark);
+        }
+        
+        .cast-scroller::-webkit-scrollbar {
+            height: 6px;
+        }
+        
+        .cast-scroller::-webkit-scrollbar-track {
+            background: var(--color-dark);
+            border-radius: 20px;
+        }
+        
+        .cast-scroller::-webkit-scrollbar-thumb {
+            background-color: var(--color-accent);
+            border-radius: 20px;
+        }
+        
+        .cast-card {
+            flex: 0 0 auto;
+            width: 150px;
+            border-radius: var(--border-radius-md);
+            overflow: hidden;
+            background-color: var(--color-dark);
+            transition: var(--transition-base);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .cast-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .cast-photo {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        
+        .cast-info {
+            padding: 0.75rem;
+        }
+        
+        .cast-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .cast-character {
+            font-size: 0.8rem;
+            color: var(--color-gray);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .companies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+            margin-top: 2rem;
+        }
+        
+        .company {
+            filter: grayscale(1) brightness(1.5);
+            opacity: 0.6;
+            transition: var(--transition-base);
+            max-width: 100px;
+            max-height: 50px;
+        }
+        
+        .company:hover {
+            filter: grayscale(0) brightness(1);
+            opacity: 1;
+        }
+        
+        .trailer-container {
+            margin-top: 1.5rem;
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 aspect ratio */
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .trailer-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 2rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--color-gray);
+            font-size: 0.875rem;
+        }
+        
+        @media (max-width: 800px) {
+            .movie-details {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .poster {
+                transform: translateY(0);
+                margin-bottom: 2rem;
+                width: 250px;
+                height: 375px;
+            }
+            
+            .title {
+                font-size: 2.5rem;
+                text-align: center;
+            }
+            
+            .tagline {
+                text-align: center;
+            }
+            
+            .badges {
+                justify-content: center;
+            }
+            
+            .rating {
+                justify-content: center;
+            }
+            
+            .actions {
+                justify-content: center;
+            }
+            
+            .two-cols {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .title {
+                font-size: 2rem;
+            }
+            
+            .hero {
+                height: auto;
+                max-height: none;
+                min-height: 0;
+            }
+            
+            .poster {
+                width: 200px;
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="hero-bg" style="background-image: url('https://media.themoviedb.org/t/p/w220_and_h330_face/6dC7ULfiutxwEAs7LjWHL2Tc7Zv.jpg');"></div>
+        <div class="hero-gradient"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="title">The Monkey</h1>
+                <p class="tagline">Tout le monde meurt. Et ça fait chier.</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="movie-details">
+            <div class="poster">
+                <img src="https://media.themoviedb.org/t/p/w220_and_h330_face/3Ps2oG3dGtQxtn3Q6bCktex1jSf.jpg" alt="The Monkey Poster">
+            </div>
+            
+            <div class="info">
+                <div class="badges">
+                    <span class="badge badge-horror">Horreur</span>
+                    <span class="badge badge-comedy">Comédie</span>
+                    <span class="badge badge-release">14 février 2025</span>
+                    <span class="badge badge-duration">98 minutes</span>
+                </div>
+                
+                <div class="rating">
+                    <div class="rating-value">5.9</div>
+                    <div class="rating-text">
+                        <div>Score TMDB</div>
+                        <div>(326 votes)</div>
+                    </div>
+                </div>
+                
+                <div class="synopsis">
+                    <p>Lorsque les jumeaux Bill et Hal trouvent le vieux jouet de singe de leur père, une série de morts effroyables commence. Les deux frères décident de jeter le jouet et de poursuivre leur vie, tout en s'éloignant l'un de l'autre.</p>
+                </div>
+                
+                <div class="actions">
+                    <a href="https://www.themoviedb.org/movie/1124620" target="_blank" class="btn btn-primary">Voir sur TMDB</a>
+                    <a href="#trailer" class="btn btn-secondary">Voir la bande-annonce</a>
+                </div>
+                
+                <div class="two-cols">
+                    <div>
+                        <div class="detail-group">
+                            <div class="detail-label">Réalisation</div>
+                            <div class="detail-value">Osgood Perkins</div>
+                        </div>
+                        <div class="detail-group">
+                            <div class="detail-label">Scénario</div>
+                            <div class="detail-value">Osgood Perkins, d'après une nouvelle de Stephen King</div>
+                        </div>
+                        <div class="detail-group">
+                            <div class="detail-label">Pays d'origine</div>
+                            <div class="detail-value">États-Unis, Canada</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="detail-group">
+                            <div class="detail-label">Budget</div>
+                            <div class="detail-value">10 000 000 $</div>
+                        </div>
+                        <div class="detail-group">
+                            <div class="detail-label">Recettes</div>
+                            <div class="detail-value">63 510 318 $</div>
+                        </div>
+                        <div class="detail-group">
+                            <div class="detail-label">Production</div>
+                            <div class="detail-value">Atomic Monster, The Safran Company, C2 Motion Picture Group</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section" id="trailer">
+            <h2 class="section-title">Bande-annonce</h2>
+            <div class="trailer-container">
+                <iframe src="https://www.youtube.com/embed/9PUsGgC0X8g" title="THE MONKEY Bande Annonce VF (2025)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">Synopsis et détails</h2>
+            <p>Basé sur une nouvelle de Stephen King, "The Monkey" raconte l'histoire terrifiante de jumeaux qui découvrent un ancien jouet en forme de singe qui appartenait à leur père. Ce qui semble n'être qu'un objet inoffensif se révèle rapidement être le vecteur d'une malédiction mortelle.</p>
+            <p>À chaque fois que le singe mécanique claque des cymbales, quelqu'un meurt de façon horrible et inexplicable. Les frères tentent de se débarrasser du jouet maudit, mais celui-ci revient constamment dans leur vie. Au fil des années, les deux frères s'éloignent l'un de l'autre, portant le poids de ce secret macabre qui les lie à jamais.</p>
+            <p>Ce film mêle habilement l'horreur psychologique et des touches d'humour noir pour créer une histoire captivante sur les liens fraternels, la culpabilité et la façon dont nos peurs d'enfance peuvent nous hanter à l'âge adulte.</p>
+        </div>
+        
+        <div class="section cast-section">
+            <h2 class="section-title">Distribution principale</h2>
+            <div class="cast-scroller">
+                <div class="cast-card">
+                    <img src="https://media.themoviedb.org/t/p/w138_and_h175_face/lSC4cMhcQeCjPFkK6qCjSGDSeR3.jpg" alt="Theo James" class="cast-photo">
+                    <div class="cast-info">
+                        <div class="cast-name">Theo James</div>
+                        <div class="cast-character">Hal / Bill</div>
+                    </div>
+                </div>
+                <div class="cast-card">
+                    <img src="https://media.themoviedb.org/t/p/w138_and_h175_face/mVdss3kBhKiWYWFFcrdOSAAfwC0.jpg" alt="Tatiana Maslany" class="cast-photo">
+                    <div class="cast-info">
+                        <div class="cast-name">Tatiana Maslany</div>
+                        <div class="cast-character">Lois Shelburn</div>
+                    </div>
+                </div>
+                <div class="cast-card">
+                    <img src="https://media.themoviedb.org/t/p/w138_and_h175_face/c1l5tNjmxzDAIaTHvzEfooUsAf8.jpg" alt="Christian Convery" class="cast-photo">
+                    <div class="cast-info">
+                        <div class="cast-name">Christian Convery</div>
+                        <div class="cast-character">Young Hal / Young Bill</div>
+                    </div>
+                </div>
+                <div class="cast-card">
+                    <img src="https://media.themoviedb.org/t/p/w138_and_h175_face/qF38oBiO1b7nEua71FY2XfIayZl.jpg" alt="Colin O'Brien" class="cast-photo">
+                    <div class="cast-info">
+                        <div class="cast-name">Colin O'Brien</div>
+                        <div class="cast-character">Petey</div>
+                    </div>
+                </div>
+                <div class="cast-card">
+                    <img src="https://media.themoviedb.org/t/p/w138_and_h175_face/b82C29R6fGiPoqIglQ4lzS6q2YX.jpg" alt="Adam Scott" class="cast-photo">
+                    <div class="cast-info">
+                        <div class="cast-name">Adam Scott</div>
+                        <div class="cast-character">Capt. Petey Shelburn</div>
+                    </div>
+                </div>
+                <div class="cast-card">
+                    <img src="https://media.themoviedb.org/t/p/w138_and_h175_face/7UKRbJBNG7mxBl2QQc5XsAh6F8B.jpg" alt="Elijah Wood" class="cast-photo">
+                    <div class="cast-info">
+                        <div class="cast-name">Elijah Wood</div>
+                        <div class="cast-character">Ted Hammerman</div>
+                    </div>
+                </div>
+                <div class="cast-card">
+                    <img src="https://media.themoviedb.org/t/p/w138_and_h175_face/52LIlmT5Pv7sqhlKBRHCkBkl1qT.jpg" alt="Rohan Campbell" class="cast-photo">
+                    <div class="cast-info">
+                        <div class="cast-name">Rohan Campbell</div>
+                        <div class="cast-character">Thrasher / Ricky</div>
+                    </div>
+                </div>
+                <div class="cast-card">
+                    <img src="https://media.themoviedb.org/t/p/w138_and_h175_face/l37vAd4fkzv9EH8r9eChuzrSPxu.jpg" alt="Sarah Levy" class="cast-photo">
+                    <div class="cast-info">
+                        <div class="cast-name">Sarah Levy</div>
+                        <div class="cast-character">Aunt Ida</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">Production</h2>
+            <p>"The Monkey" est produit par James Wan (le créateur des franchises "Saw" et "Conjuring") à travers sa société Atomic Monster, en collaboration avec The Safran Company et C2 Motion Picture Group. Le film est dirigé par Osgood Perkins, fils de l'acteur Anthony Perkins et reconnu pour son travail dans le cinéma d'horreur avec des films comme "I Am the Pretty Thing That Lives in the House" et "Gretel & Hansel".</p>
+            <p>L'histoire est adaptée d'une nouvelle de Stephen King parue dans le recueil "Skeleton Crew" en 1985. La production a mis l'accent sur la création d'un style visuel unique et d'une atmosphère oppressante qui correspond à l'univers singulier de King, tout en y ajoutant une touche contemporaine.</p>
+            <div class="companies">
+                <img src="/api/placeholder/100/50" alt="Atomic Monster" class="company">
+                <img src="/api/placeholder/100/50" alt="The Safran Company" class="company">
+                <img src="/api/placeholder/100/50" alt="C2 Motion Picture Group" class="company">
+                <img src="/api/placeholder/100/50" alt="Range Media Partners" class="company">
+                <img src="/api/placeholder/100/50" alt="Oddfellows Entertainment" class="company">
+            </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 - Données fournies par TMDB - Film "The Monkey" actuellement en salle</p>
+        </div>
+    </footer>
+</body>
+</html>
