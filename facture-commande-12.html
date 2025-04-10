@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Facture #12 - My Bookstore</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      border: 1px solid #ddd;
+      padding: 30px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .header {
+      border-bottom: 2px solid #333;
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #2c3e50;
+    }
+    .facture-info {
+      text-align: right;
+    }
+    .facture-title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .customer-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+    .customer-info, .shipping-info {
+      padding: 15px;
+      background-color: #f9f9f9;
+      border-radius: 5px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    th, td {
+      padding: 12px 15px;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+      font-weight: bold;
+    }
+    .total-info {
+      margin-top: 20px;
+      text-align: right;
+    }
+    .total-row {
+      font-weight: bold;
+      font-size: 18px;
+    }
+    .footer {
+      margin-top: 30px;
+      border-top: 1px solid #ddd;
+      padding-top: 20px;
+      text-align: center;
+      font-size: 14px;
+      color: #777;
+    }
+    .payment-info {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #f9f9f9;
+      border-radius: 5px;
+      border-left: 4px solid #2980b9;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="logo">My Bookstore</div>
+      <div class="facture-info">
+        <div class="facture-title">FACTURE</div>
+        <div>Numéro: #00012</div>
+        <div>Date: 10/01/2024</div>
+        <div>Statut: Expédiée</div>
+      </div>
+    </div>
+
+    <div class="customer-grid">
+      <div class="customer-info">
+        <h3>Client</h3>
+        <p>
+          <strong>Martin Sophie</strong><br>
+          45 Avenue Victor Hugo<br>
+          75016 Paris<br>
+          France<br>
+          Tél: 0607080910<br>
+          Email: sophie.martin@email.com
+        </p>
+      </div>
+      <div class="shipping-info">
+        <h3>Adresse de livraison</h3>
+        <p>
+          <strong>Martin Sophie</strong><br>
+          45 Avenue Victor Hugo<br>
+          75016 Paris<br>
+          France
+        </p>
+      </div>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Article</th>
+          <th>Auteur</th>
+          <th>ISBN</th>
+          <th>Quantité</th>
+          <th>Prix unitaire</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>SQL pour l'exploitation de données</td>
+          <td>Marine Lambert</td>
+          <td>978-2100811298</td>
+          <td>1</td>
+          <td>35,50 €</td>
+          <td>35,50 €</td>
+        </tr>
+        <tr>
+          <td>NoSQL : les bases de données nouvelle génération</td>
+          <td>Raphaël Bernard</td>
+          <td>978-2100836208</td>
+          <td>1</td>
+          <td>32,00 €</td>
+          <td>32,00 €</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="total-info">
+      <table style="max-width: 300px; margin-left: auto;">
+        <tr>
+          <td>Sous-total:</td>
+          <td>67,50 €</td>
+        </tr>
+        <tr>
+          <td>TVA (20%):</td>
+          <td>13,50 €</td>
+        </tr>
+        <tr>
+          <td>Frais de livraison:</td>
+          <td>5,00 €</td>
+        </tr>
+        <tr class="total-row">
+          <td>Total:</td>
+          <td>86,00 €</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="payment-info">
+      <h3>Informations de paiement</h3>
+      <p>
+        <strong>Méthode de paiement:</strong> Carte bancaire<br>
+        <strong>Date de paiement:</strong> 10/01/2024<br>
+        <strong>Référence transaction:</strong> CB-2024-01-10-12
+      </p>
+    </div>
+
+    <div class="footer">
+      <p>My Bookstore - 123 Rue des Livres, 75000 Paris - SIRET: 123 456 789 00012</p>
+      <p>Email: contact@mybookstore.fr - Tel: 01 23 45 67 89</p>
+      <p>Merci pour votre confiance !</p>
+    </div>
+  </div>
+</body>
+</html>
