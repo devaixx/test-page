@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Facture #11 - My Bookstore</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      border: 1px solid #ddd;
+      padding: 30px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .header {
+      border-bottom: 2px solid #333;
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #2c3e50;
+    }
+    .facture-info {
+      text-align: right;
+    }
+    .facture-title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .customer-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+    .customer-info, .shipping-info {
+      padding: 15px;
+      background-color: #f9f9f9;
+      border-radius: 5px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    th, td {
+      padding: 12px 15px;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+      font-weight: bold;
+    }
+    .total-info {
+      margin-top: 20px;
+      text-align: right;
+    }
+    .total-row {
+      font-weight: bold;
+      font-size: 18px;
+    }
+    .footer {
+      margin-top: 30px;
+      border-top: 1px solid #ddd;
+      padding-top: 20px;
+      text-align: center;
+      font-size: 14px;
+      color: #777;
+    }
+    .payment-info {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #f9f9f9;
+      border-radius: 5px;
+      border-left: 4px solid #2980b9;
+    }
+    .status-validated {
+      color: #27ae60;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="logo">My Bookstore</div>
+      <div class="facture-info">
+        <div class="facture-title">FACTURE</div>
+        <div>Numéro: #00011</div>
+        <div>Date: 20/12/2023</div>
+        <div>Statut: <span class="status-validated">Validée</span></div>
+      </div>
+    </div>
+
+    <div class="customer-grid">
+      <div class="customer-info">
+        <h3>Client</h3>
+        <p>
+          <strong>Simon Julie</strong><br>
+          78 Rue Victor Hugo<br>
+          34000 Montpellier<br>
+          France<br>
+          Tél: 0639404142<br>
+          Email: julie.simon@email.com
+        </p>
+      </div>
+      <div class="shipping-info">
+        <h3>Adresse de livraison</h3>
+        <p>
+          <strong>Simon Julie</strong><br>
+          78 Rue Victor Hugo<br>
+          34000 Montpellier<br>
+          France
+        </p>
+      </div>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Article</th>
+          <th>Auteur</th>
+          <th>ISBN</th>
+          <th>Quantité</th>
+          <th>Prix unitaire</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>JavaScript : Le guide complet</td>
+          <td>Thomas Martin</td>
+          <td>978-2416007644</td>
+          <td>2</td>
+          <td>42,00 €</td>
+          <td>84,00 €</td>
+        </tr>
+        <tr>
+          <td>Angular : développement frontend avancé</td>
+          <td>Céline Moreau</td>
+          <td>978-2212679427</td>
+          <td>1</td>
+          <td>36,90 €</td>
+          <td>36,90 €</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="total-info">
+      <table style="max-width: 300px; margin-left: auto;">
+        <tr>
+          <td>Sous-total:</td>
+          <td>120,90 €</td>
+        </tr>
+        <tr>
+          <td>TVA (20%):</td>
+          <td>24,18 €</td>
+        </tr>
+        <tr>
+          <td>Frais de livraison:</td>
+          <td>4,95 €</td>
+        </tr>
+        <tr class="total-row">
+          <td>Total:</td>
+          <td>150,03 €</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="payment-info">
+      <h3>Informations de paiement</h3>
+      <p>
+        <strong>Méthode de paiement:</strong> PayPal<br>
+        <strong>Date de paiement:</strong> 20/12/2023<br>
+        <strong>Référence transaction:</strong> PP-2023-12-20-11
+      </p>
+    </div>
+
+    <div class="footer">
+      <p>My Bookstore - 123 Rue des Livres, 75000 Paris - SIRET: 123 456 789 00012</p>
+      <p>Email: contact@mybookstore.fr - Tel: 01 23 45 67 89</p>
+      <p>Merci pour votre confiance !</p>
+    </div>
+  </div>
+</body>
+</html>
